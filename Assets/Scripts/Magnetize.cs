@@ -6,7 +6,7 @@ using UnityEngine;
 public class Magnetize : MonoBehaviour
 {
     private float pullStrength = 100f;
-    List<Rigidbody> magnets = new List<Rigidbody>();
+    List<Transform> magnets = new List<Transform>();
     [SerializeField] private Rigidbody parent;
 
     void Start()
@@ -16,22 +16,34 @@ public class Magnetize : MonoBehaviour
 
     void FixedUpdate()
     {
-        foreach (Rigidbody magnet in magnets) 
+        foreach (Transform magnet in magnets) 
         {
             if (Vector3.Distance(magnet.position, transform.position) > 1f) 
             {
                 magnets.Remove(magnet);
                 break;
             }
-            parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position)*Time.deltaTime);
+            if (magnet.tag == "North" && gameObject.tag == "South")
+            {
+                parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+            }
+            else if (magnet.tag == "South" && gameObject.tag == "North")
+            {
+                parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+            }
+            else
+            {
+                parent.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+            }
+            
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Magnet")
+        if (other.tag == "North" || other.tag == "South")
         {
-            magnets.Add(other.GetComponent<Rigidbody>());
+            magnets.Add(other.GetComponent<Transform>());
         }
 
     }

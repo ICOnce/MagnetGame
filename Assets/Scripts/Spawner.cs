@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && activeSquare == false) 
         {
             useGrav = false;
-            curSquare = Instantiate(GreenSquare, new Vector3(0, 1, 0), Quaternion.identity);
+            curSquare = Instantiate(GreenSquare, new Vector3(0, 16, 0), Quaternion.identity);
             curSquare.GetComponent<Rigidbody>().useGravity = false;
             activeSquare = true;
         }
