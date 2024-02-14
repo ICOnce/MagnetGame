@@ -27,6 +27,7 @@ public class movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow)) transform.Rotate(new Vector3(0, 0, 0.1f));
         if (Input.GetKey(KeyCode.RightArrow)) transform.Rotate(new Vector3(0, 0, -0.1f));
+
         transform.Rotate(new Vector3(Input.GetAxisRaw("Mouse ScrollWheel"), 0, 0));
 
         if (Input.GetKey(KeyCode.UpArrow)) rb.AddForce(new Vector3(0, 1, 0) * speed * Time.deltaTime, ForceMode.Impulse);

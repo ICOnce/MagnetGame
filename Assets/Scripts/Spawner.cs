@@ -48,7 +48,10 @@ public class Spawner : MonoBehaviour
 
     public static bool gravity()
     {
-        if (useGrav == true) return true;
-        else return false;
+        switch (useGrav)
+        {
+            case true: return true;
+            case false: return false;
+        }
     }
 }

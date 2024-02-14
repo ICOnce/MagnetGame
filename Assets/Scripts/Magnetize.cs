@@ -23,7 +23,7 @@ public class Magnetize : MonoBehaviour
                 magnets.Remove(magnet);
                 break;
             }
-            parent.AddForce((magnet.position - transform.position) * pullStrength / Vector3.Distance(magnet.position, transform.position)*Time.deltaTime);
+            parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position)*Time.deltaTime);
         }
     }
 
@@ -34,9 +34,5 @@ public class Magnetize : MonoBehaviour
             magnets.Add(other.GetComponent<Rigidbody>());
         }
 
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
     }
 }
