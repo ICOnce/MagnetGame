@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Magnetize : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private float pullStrength = 10f;
+    private float pullStrength = 100f;
     List<Rigidbody> magnets = new List<Rigidbody>();
     [SerializeField] private Rigidbody parent;
 
@@ -15,7 +14,6 @@ public class Magnetize : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         foreach (Rigidbody magnet in magnets) 
@@ -25,10 +23,7 @@ public class Magnetize : MonoBehaviour
                 magnets.Remove(magnet);
                 break;
             }
-            Rigidbody temp = magnet.GetComponentInParent<Transform>().GetComponentInParent<Rigidbody>();
-            parent.AddForce((magnet.position - transform.position) * pullStrength / Vector3.Distance(magnet.position, transform.position)*Time.deltaTime, ForceMode.VelocityChange);
-            Debug.Log((magnet.position - transform.position) * pullStrength / Vector3.Distance(magnet.position, transform.position));
-            Debug.Log(temp.name);
+            parent.AddForce((magnet.position - transform.position) * pullStrength / Vector3.Distance(magnet.position, transform.position)*Time.deltaTime);
         }
     }
 
@@ -43,6 +38,5 @@ public class Magnetize : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //magnets.Remove(other.GetComponent<Rigidbody>());
     }
 }
