@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  good: {fileID: 6298388698235226450, guid: c53cb36aa5c08694fbb7890bdee35ce1, type: 3}
+  bad: {fileID: 6854154535951359122, guid: 00fa8b1d28760324fab0d8d549be8f8c, type: 3}
 --- !u!1 &1879532235100838263
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,3 +273,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
+  good: {fileID: 6298388698235226450, guid: c53cb36aa5c08694fbb7890bdee35ce1, type: 3}
+  bad: {fileID: 6854154535951359122, guid: 00fa8b1d28760324fab0d8d549be8f8c, type: 3}

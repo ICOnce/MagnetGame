@@ -1,13 +1,18 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Magnetize : MonoBehaviour
 {
-    private float pullStrength = 100f;
+    private float pullStrength = 50f;
     List<Transform> magnets = new List<Transform>();
     [SerializeField] private Rigidbody parent;
+    bool test = false;
+
+    [SerializeField] private GameObject good, bad;
 
     void Start()
     {
@@ -16,26 +21,63 @@ public class Magnetize : MonoBehaviour
 
     void FixedUpdate()
     {
-        foreach (Transform magnet in magnets) 
+        if (test == false)
         {
-            if (Vector3.Distance(magnet.position, transform.position) > 1f) 
+            foreach (Transform magnet in magnets)
             {
-                magnets.Remove(magnet);
-                break;
+                if (Vector3.Distance(magnet.position, transform.position) > 1f)
+                {
+                    magnets.Remove(magnet);
+                    break;
+                }
+                if (magnet.tag == "North" && gameObject.tag == "South")
+                {
+                    parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    //magnet.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+                }
+                else if (magnet.tag == "South" && gameObject.tag == "North")
+                {
+                    parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    //magnet.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+                }
+                else
+                {
+                    parent.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    //magnet.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+                }
             }
-            if (magnet.tag == "North" && gameObject.tag == "South")
+        }
+        else
+        {
+            bool triggered = false;
+            foreach (Transform magnet in magnets)
             {
-                parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
+                triggered = false;
+                if (triggered == false)
+                {
+                    if (Vector3.Distance(magnet.position, transform.position) > 1f)
+                    {
+                        magnets.Remove(magnet);
+                        break;
+                    }
+                    if (magnet.tag == "North" && gameObject.tag == "South")
+                    {
+                        Instantiate(good, magnet.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+                        triggered = true;
+                    }
+                    else if (magnet.tag == "South" && gameObject.tag == "North")
+                    {
+                        Instantiate(good, magnet.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+                        triggered = true;
+                    }
+                    else
+                    {
+                        Instantiate(bad, magnet.transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+                        triggered = true;
+                    }
+                }
+
             }
-            else if (magnet.tag == "South" && gameObject.tag == "North")
-            {
-                parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
-            }
-            else
-            {
-                parent.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
-            }
-            
         }
     }
 
