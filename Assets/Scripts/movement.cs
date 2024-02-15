@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    private float speed = 30f;
+    private float speed = 30*9f;
     Rigidbody rb;
     public bool gravity;
     
