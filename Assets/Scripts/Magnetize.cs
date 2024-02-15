@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Magnetize : MonoBehaviour
 {
-    private float pullStrength = 200f;
+    private float pullStrength = 50f;
     List<Transform> magnets = new List<Transform>();
     [SerializeField] private Rigidbody parent;
     bool test = false;

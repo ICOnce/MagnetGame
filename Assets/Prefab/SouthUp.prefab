@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 517381443581715846}
   - component: {fileID: 2337544077165255055}
   - component: {fileID: 2678311052637553964}
-  - component: {fileID: 2437557874124581015}
-  - component: {fileID: 2076203171958602936}
   m_Layer: 0
   m_Name: SouthPole
   m_TagString: South
@@ -123,48 +121,6 @@ MonoBehaviour:
   parent: {fileID: 0}
   good: {fileID: 6298388698235226450, guid: c53cb36aa5c08694fbb7890bdee35ce1, type: 3}
   bad: {fileID: 6854154535951359122, guid: 00fa8b1d28760324fab0d8d549be8f8c, type: 3}
---- !u!54 &2437557874124581015
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207366709619998911}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!138 &2076203171958602936
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207366709619998911}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &1879532235100838263
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,8 +167,6 @@ GameObject:
   - component: {fileID: 4500186693583946295}
   - component: {fileID: 1996343734649017780}
   - component: {fileID: 6923428469692991511}
-  - component: {fileID: 8471690223040293396}
-  - component: {fileID: 5045090610653539206}
   m_Layer: 0
   m_Name: NorthPole
   m_TagString: North
@@ -321,45 +275,3 @@ MonoBehaviour:
   parent: {fileID: 0}
   good: {fileID: 6298388698235226450, guid: c53cb36aa5c08694fbb7890bdee35ce1, type: 3}
   bad: {fileID: 6854154535951359122, guid: 00fa8b1d28760324fab0d8d549be8f8c, type: 3}
---- !u!54 &8471690223040293396
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499773967412914670}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!138 &5045090610653539206
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499773967412914670}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 0
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
