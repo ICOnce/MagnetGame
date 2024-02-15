@@ -11,3 +11,6 @@ Space
 
 Enable gravity of current spawned tiles
 Backspace
+
+Use the scene 
+"CurrentGoodScene"
