@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Magnetize : MonoBehaviour
 {
-    private float pullStrength = 200f;
+    private float pullStrength = 1f;
     List<Transform> magnets = new List<Transform>();
     [SerializeField] private Rigidbody parent;
     bool test = false;
@@ -25,24 +25,27 @@ public class Magnetize : MonoBehaviour
         {
             foreach (Transform magnet in magnets)
             {
-                if (Vector3.Distance(magnet.position, transform.position) > 1f)
+                if (Vector3.Distance(magnet.position, transform.position) > 0.5f)
                 {
                     magnets.Remove(magnet);
                     break;
                 }
                 if (magnet.tag == "North" && gameObject.tag == "South")
                 {
-                    parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    parent.AddForceAtPosition(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position), transform.position);
+                    //parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position));
                     //magnet.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
                 }
                 else if (magnet.tag == "South" && gameObject.tag == "North")
                 {
-                    parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    parent.AddForceAtPosition(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position), transform.position);
+                    //parent.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position));
                     //magnet.AddForce(((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
                 }
                 else
                 {
-                    parent.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.fixedDeltaTime);
+                    parent.AddForceAtPosition(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position), transform.position);
+                    //parent.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position));
                     //magnet.AddForce(-((magnet.position - transform.position).normalized) * pullStrength / Vector3.Distance(magnet.position, transform.position) * Time.deltaTime);
                 }
             }
