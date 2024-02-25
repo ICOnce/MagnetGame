@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class Spawner : MonoBehaviour
         {
             useGrav = false;
             curSquare = Instantiate(GreenSquare, new Vector3(-15, 16, 0), Quaternion.identity);
+            curSquare.GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 0.5f, 0.15f);
             curSquare.GetComponent<Rigidbody>().useGravity = false;
             activeSquare = true;
         }
