@@ -16,7 +16,22 @@ public class Magnetize : MonoBehaviour
 
     void Start()
     {
-        
+        int s = 0;
+        while (s < 100)
+        {
+            Debug.Log("Her Lars");
+            s++;
+        }
+        int z = 0;
+        /*while (z < 5)
+        {
+            z = (int)Time.realtimeSinceStartup;
+            Debug.Log("Omae wa mou shinderu!");
+            if (z >= 5)
+            {
+                Destroy(parent);
+            }
+        }*/
     }
 
     void FixedUpdate()
